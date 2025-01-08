@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        /* Reset CSS */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Email wrapper */
+        .email-wrapper {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #085191;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Content */
+        .content {
+            padding: 20px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #085191;
+            color: #fff !important;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #063d70;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+
+        .footer p {
+            margin-top: 10px;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .header, .content, .footer {
+                padding: 15px;
+            }
+
+            .btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="email-wrapper">
+    <!-- Header -->
+    <div class="header">
+        <h1>Email Verification</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <p>Hello <span th:text="${name}">User</span>,</p>
+        <p>Welcome to TODO! Your number one Task Manager! Click the button below to verify your email address:</p>
+        <a href="#" th:href="${link}" class="btn">Verify Email</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>This email was sent from <b>TODO App</b>.</p>
+    </div>
+</div>
+</body>
+</html>
