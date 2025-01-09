@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(
-//                        url = "https://vigilante-app-b938c4cb3a2f.herokuapp.com",
+                        url = "https://devfoundry-todo-7a5ac952823c.herokuapp.com",
                         description = "Production Server"
                 ),
                 @Server(
