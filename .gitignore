@@ -36,3 +36,4 @@ build/
 .env
 
 # Ignore application properties or configuration files
+/application-prod.properties
