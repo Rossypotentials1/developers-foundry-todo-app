@@ -78,7 +78,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://vigilante-app-b938c4cb3a2f.herokuapp.com"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("https://devfoundry-todo-7a5ac952823c.herokuapp.com"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "PUT", "PATCH", "POST", "DELETE"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
         corsConfiguration.setAllowCredentials(true);
