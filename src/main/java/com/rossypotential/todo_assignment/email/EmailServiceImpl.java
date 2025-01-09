@@ -6,6 +6,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
@@ -25,11 +26,17 @@ import java.util.Objects;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
+
 public class EmailServiceImpl implements EmailService {
 
-    private final JavaMailSender javaMailSender;
-    private final SpringTemplateEngine tEngine;
+    @Autowired
+    public EmailServiceImpl(JavaMailSender javaMailSender, SpringTemplateEngine tEngine) {
+        this.javaMailSender = javaMailSender;
+        this.tEngine = tEngine;
+    }
+
+    private  JavaMailSender javaMailSender;
+    private  SpringTemplateEngine tEngine;
     @Value("${spring.mail.username}")
     private String senderMail;
     private static final String TEMPLATE_PATH = "templates/html/";

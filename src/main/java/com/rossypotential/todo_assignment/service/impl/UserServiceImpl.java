@@ -22,6 +22,7 @@ import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,16 +51,24 @@ import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     @Value("${baseUrl}")
     private String baseUrl;
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private  UserRepository userRepository;
+        @Autowired
+    public UserServiceImpl( UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, EmailService emailService) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
+        this.emailService = emailService;
+    }
+
+    private  final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private final AuthenticationManager authenticationManager;
+    private  final AuthenticationManager authenticationManager;
     private final EmailService emailService;
     private final Set<String> validDomains = Set.of("com", "net", "org", "edu", "tech", "*");
 
