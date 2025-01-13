@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 
     public ApiResponse<RegisterResponse> register(@Valid RegisterRequest registerRequest) throws MessagingException, JsonProcessingException {
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
-            return ApiResponse.badRequest("An account with this email already exists.");
+            return ApiResponse.badRequest("Email is taken");
         }
 
         String domain = registerRequest.getEmail().substring(registerRequest.getEmail().lastIndexOf(".") + 1);
@@ -115,12 +115,13 @@ public class UserServiceImpl implements UserService {
         log.info("Email sent successfully");
 
         RegisterResponse registerResponse = RegisterResponse.builder()
+                .id(newUser.getId())
                 .firstName(newUser.getFirstName())
                 .lastName(newUser.getLastName())
                 .email(newUser.getEmail())
                 .build();
 
-        return ApiResponse.ok("Congratulations!!!",registerResponse);
+        return ApiResponse.ok("Signup successful,Congratulations!!!",registerResponse);
     }
 
 
@@ -169,11 +170,9 @@ public class UserServiceImpl implements UserService {
                     user.get().setIsEnabled(true);
                     user.get().setVerificationCode(null);
                     userRepository.save(user.get());
-                    return "Email Verified";
+                    return "Email Verified,proceed to login";
                 }
 
-            } else {
-                return "User does not exist";
             }
         }
         return "Invalid token or broken link";
@@ -225,6 +224,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(appUser);
 
             UserResponse<?> userResponse = UserResponse.builder()
+                    .id(appUser.getId())
                     .firstName(appUser.getFirstName())
                     .lastName(appUser.getLastName())
                     .phoneNumber(appUser.getPhoneNumber())

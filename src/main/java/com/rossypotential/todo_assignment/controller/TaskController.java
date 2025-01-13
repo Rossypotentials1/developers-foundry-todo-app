@@ -5,14 +5,12 @@ import com.rossypotential.todo_assignment.dtos.request.UpdateTask;
 import com.rossypotential.todo_assignment.dtos.response.ApiResponse;
 import com.rossypotential.todo_assignment.dtos.response.TaskStatusResponse;
 import com.rossypotential.todo_assignment.dtos.response.TasksResponse;
-import com.rossypotential.todo_assignment.model.Task;
 import com.rossypotential.todo_assignment.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/tasks")

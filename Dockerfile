@@ -1,5 +1,7 @@
 # Stage 1: Build the application
-FROM maven:3.8.6-jdk-17-slim AS builder
+#FROM maven:3.8.6-jdk-17-slim AS builder
+
+FROM maven:3.6-openjdk-17
 
 
 # Set the working directory inside the container

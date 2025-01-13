@@ -156,8 +156,10 @@ public class TaskServiceImpl implements TaskService {
 
         taskRepository.save(task);
 
-        return new TasksResponse(task.getId(), task.getTitle(), task.getStatus(),task.getDescription(),task.getDeadline());
+        return new TasksResponse(task.getId(), task.getTitle(), task.getStatus(), task.getDescription(), task.getDeadline());
     }
+
+
 
 
     @Override
@@ -193,5 +195,8 @@ public class TaskServiceImpl implements TaskService {
             throw new IllegalArgumentException("Task deadline is required.");
         }
 
+        if (taskRequest.getDeadline().isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("Deadline cannot be in the past.");
+        }
     }
 }

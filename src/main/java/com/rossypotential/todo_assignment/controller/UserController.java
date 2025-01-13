@@ -24,7 +24,7 @@ public class UserController {
                                                                  @RequestParam(required = false) String phoneNumber
 
     )
-                                        {
+    {
     return userService.editUser(id, firstName, lastName, phoneNumber);
                                         }
 

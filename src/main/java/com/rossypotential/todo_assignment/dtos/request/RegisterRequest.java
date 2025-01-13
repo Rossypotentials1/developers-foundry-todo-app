@@ -31,7 +31,7 @@ public class RegisterRequest {
             regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$",
             message = "Email must be in a valid format with a valid domain"
     )
-    @Schema(description = "User's email address", example = "john.doe@example.com")
+    @Schema(description = "User's email address", example = "urokorosemarynnena@gmail.com")
     private String email;
 
 
